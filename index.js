@@ -11,7 +11,7 @@ client.on('ready', () => {
   var cnl = client.channels.cache.get(keys["dbFilesChannel"]);
   cnl.messages.fetch(cnl.lastMessageID).then(m=>m.attachments.size&&(fetch(m.attachments.first().attachment).then(_=>_.text()).then(db=>{
     database = db;
-    Bot(database,keys["token"],cnl);
+    Bot(database,process.env.TOKEN,cnl);
     console.log(database);
   })));
 });
